@@ -1,6 +1,6 @@
 # saveBackup README
 
-This is a extension for backup file when you save.
+This is a vscode extension for backup file when you save.
 
 ## Features
 
