@@ -2,13 +2,14 @@
     "name": "savebackup",
     "displayName": "saveBackup",
     "description": "Backup file when you save.",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "publisher": "purplestone",
     "tags": [
         "save",
         "backup",
         "bak"
     ],
+    "icon": "saveBackup.png",
     "repository": {
         "type": "git",
         "url": "https://github.com/purplestone/vscode-saveBackup.git"
@@ -34,7 +35,7 @@
             }
         ],
         "configuration": {
-            "title": "Extension saveBackup.",
+            "title": "Extension saveBackup",
             "type": "object",
             "properties": {
                 "saveBackup.conf.enable": {
