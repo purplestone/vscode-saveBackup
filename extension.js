@@ -51,7 +51,7 @@ function buildeBakPath(sFilePath, sBackupDir) {
     var sR = $$path.join(sBackupDir, sNewPath);
     var sExName = $$path.extname(sFilePath);
     var oD = new Date(); 
-    var sTime = `${oD.getFullYear()}${c2(oD.getMonth()+1)}${c2(oD.getDay())}`;
+    var sTime = `${oD.getFullYear()}${c2(oD.getMonth()+1)}${c2(oD.getDate())}`;
     sTime += `_${c2(oD.getHours())}${c2(oD.getMinutes())}${c2(oD.getSeconds())}` + '_' + (+oD).toString().slice(-3);
     sR = $$path.join(sR, sTime + sExName).replace(/\\/g, '/');
 
