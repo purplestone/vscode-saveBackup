@@ -16,6 +16,21 @@ function activate(context) {
     context.subscriptions.push(disposable);
 }
 
+function flatSave(oConf, sFileText, sFilePath, sBakPath) {
+    try {
+        var sFileName = $$path.basename(sFilePath);
+        if (new RegExp(oConf.fileNameMatch).test(sFileName)) {
+            var sFileDir = $$path.dirname(sBakPath);
+            if (!$$fs.existsSync(sFileDir)) {
+                $$fs.mkdirSync(sFileDir);
+            }
+            $$fs.writeFileSync(sBakPath, sFileText); 
+        }
+    } catch (error) {
+        vscode.window.showErrorMessage(`extension.saveBackup : ${error.message}`);
+    }
+}
+
 function backupFile(document) {
     var sFileText = document.getText();
     var sFilePath = document.uri.path;
@@ -28,20 +43,14 @@ function backupFile(document) {
         var backupDir = getParsePath(oConf.backupDir);
         var sBakPath = buildeBakPath(sFilePath, backupDir);
         if ($$fs.existsSync(backupDir)) {
-            try {
-                var sFileName = $$path.basename(sFilePath);
-                if (new RegExp(oConf.fileNameMatch).test(sFileName)) {
-                    var sFileDir = $$path.dirname(sBakPath);
-                    if (!$$fs.existsSync(sFileDir)) {
-                        $$fs.mkdirSync(sFileDir);
-                    }
-                    $$fs.writeFileSync(sBakPath, sFileText); 
-                }
-            } catch (error) {
-                vscode.window.showErrorMessage(`extension.saveBackup : ${error.message}`);
+            if (oConf.recreateSubfolders) {
+                //rebuildDirSave()
+            } else {
+                var sBakPath = buildeBakPath(sFilePath, backupDir);
+                flatSave(oConf, sFileText, sFilePath, sBakPath)
             }
         }else{
-            vscode.window.showErrorMessage(`extension.saveBackup : ${backupDir} is not exists. To create the dir, or configure saveBackup.conf.backupDir`);
+            vscode.window.showErrorMessage(`extension.saveBackup : ${backupDir} does not exist. Create the dir, or configure an existing one in saveBackup.conf.backupDir`);
         }
     }
 }

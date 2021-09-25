@@ -18,7 +18,7 @@
         "url": "https://github.com/purplestone/vscode-saveBackup/issues"
     },
     "engines": {
-        "vscode": "^1.14.0"
+        "vscode": "^1.60.2"
     },
     "categories": [
         "Other"
@@ -52,6 +52,11 @@
                     "type": "string",
                     "description": "Regex for matching files to save enable",
                     "default": ".*"
+                },
+                "saveBackup.conf.recreateSubfolders": {
+                    "type": "boolean",
+                    "description": "Recreate subfolders of the original location, as backupDir/[subFolders]/[fileName-yyyy-mm-dd-hr-mm-ss\n`false` stores all files in backupDir/[fileName]/yyyy-mm-dd-hr-mm-ss",
+                    "default": false
                 }
             }
         }
