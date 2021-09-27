@@ -13,5 +13,5 @@ When you save, Current file text that open will copy to directory that configure
 * `saveBackup.conf.enable`: enable/disable this extension
 * `saveBackup.conf.backupDir`: backup directory
 * `saveBackup.conf.fileNameMatch`: match fileName to backup
-
+* `saveBackup.conf.fileNameMatchModifier`: modifier for file Name match
 
