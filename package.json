@@ -28,12 +28,10 @@
     ],
     "main": "./extension",
     "contributes": {
-        "commands": [
-            {
-                "command": "extension.saveBackup.backupFile",
-                "title": "Backup File"
-            }
-        ],
+        "commands": [{
+            "command": "extension.saveBackup.backupFile",
+            "title": "Backup File"
+        }],
         "configuration": {
             "title": "Extension saveBackup",
             "type": "object",
@@ -52,6 +50,11 @@
                     "type": "string",
                     "description": "Regex for matching files to save enable",
                     "default": ".*"
+                },
+                "saveBackup.conf.fileNameMatchModifier": {
+                    "type": "string",
+                    "description": "Regex modifiers",
+                    "default": ""
                 }
             }
         }
