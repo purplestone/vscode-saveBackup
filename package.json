@@ -40,22 +40,27 @@
             "properties": {
                 "saveBackup.conf.enable": {
                     "type": "boolean",
-                    "description": "Automatically backup into BAK_DIR when save.",
+                    "description": "Automatically backup into 'backupDir' when save.",
                     "default": true
                 },
                 "saveBackup.conf.backupDir": {
                     "type": "string",
-                    "description": "Dir path that backup to.",
+                    "description": "Backup directory path to save to.",
                     "default": "${.vscode}/saveBackup"
                 },
                 "saveBackup.conf.fileNameMatch": {
                     "type": "string",
-                    "description": "Regex for matching files to save enable",
+                    "description": "Regex for choosing which files to backup, if needed",
                     "default": ".*"
                 },
                 "saveBackup.conf.recreateSubfolders": {
                     "type": "boolean",
-                    "description": "Recreate subfolders of the original location, as backupDir/[subFolders]/[fileName-yyyy-mm-dd-hr-mm-ss\n`false` stores all files in backupDir/[fileName]/yyyy-mm-dd-hr-mm-ss",
+                    "description": "Recreate subfolders as in the original file location, i.e. backupDir/[subFolders]/[fileName-yyyy-mm-dd-hr-mm-ss\n`false` stores backed up files in backupDir/[fileName]/yyyy-mm-dd-hr-mm-ss",
+                    "default": true
+                },
+                "saveBackup.conf.recreateFullSubfolders": {
+                    "type": "boolean",
+                    "description": "Recreate the full directory of subfolders inside backupDir/\nFalse: recreate partial subfoder structure. Use false if all your VSCode projects are located inside a common development folder (directories subfolder structure will use the development folder as a root, preventing recreation of home/user/etc for the backup dirs)",
                     "default": false
                 }
             }
